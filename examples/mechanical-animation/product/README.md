@@ -1,4 +1,6 @@
-# Native teaching application
+> Example-only: this directory teaches client use and supports acceptance tests. It is not an installed product component or a second host. The historical `product/` path is retained for existing scripts.
+
+# Teaching and test example
 
 This local application loads three ordinary native Python spools into the existing macOS user daemon. The browser submits reviewed operations, and opens the original read-only observation console. The daemon retains its existing FIFO queue, finite supervisors, task grants, lifecycle and artifact custody. This application has no worker loop, retry policy, model client or credential store.
 
@@ -37,6 +39,8 @@ After completing both cases, run `python3 qualify.py --root PRIVATE_ROOT --outpu
 
 [Portable product acceptance](acceptance.json) records both cases through all six native phases, original task grants and revision claims, exact decoded-frame parity (144 steam / 192 inline-four), reproducible envelopes and refusal of unaccepted Shuttle output. Both native Krita windows were observed after the application handoff, with the correct 1920×1080 reference and film-reference layer. This product run qualifies opening the accepted reference; historical paint/KRA save/reopen evidence retains its separate scope.
 
-This integration requires an-agent `6fc028a` (or its merged descendant) and Shuttle `34facba` (or its merged descendant). Merge the host support first, then Shuttle, then this application; Loom's matching platform note is documentation only. All ordinary development targets remain their repository's current development authority.
+This integration requires an-agent `f740188` (or its merged descendant) and Shuttle `34facba` (or its merged descendant). Merge the host support first, then Shuttle, then this application; Loom's matching platform note is documentation only. All ordinary development targets remain their repository's current development authority.
 
 The product page defaults to English. Its language button retains the Simplified Chinese companion using the same controller and records; changing language does not submit an operation or change permissions. The original observation workbench also defaults to English.
+
+Client protocol and the optional local page transport live under `examples/support/`; both remain test/example support. This file contains domain setup and sequencing only. Downstream submissions use `{catalog, revision}` with a `run-artifact` grant. Blob filenames and revision-directory layouts are resolved only inside the host.
