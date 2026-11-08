@@ -1,0 +1,68 @@
+{
+  "schema": "an-mechanical-native-product-acceptance-v1",
+  "date": "2026-11-08",
+  "scope": "native daemon product entry, original task permissions and formal artifact custody",
+  "passed": true,
+  "original_queue": true,
+  "credential_store_added": false,
+  "source_archives_unchanged": true,
+  "native_envelopes_reproduce": true,
+  "cases": {
+    "steam": {
+      "mechanism": {
+        "accepted": true,
+        "revision": "7b7ecdabd95f131fb7a865a06144269fea73d8e8a3048b303f7e970e3d9eb164",
+        "native_manifest": "b7d9cc73a9a4144def1e37b3cbf5ef693ba3446885f3d86ba157d20e12486fcb"
+      },
+      "appearance": {
+        "accepted": true,
+        "revision": "23f93d56dc581f036c6e5d71248811808240a18c9d367c86bc0b0aa561712ddd",
+        "native_manifest": "bc3aa8aff931f8784ec15fb44126922802b57c16cb516d10ab525d2bdc2785eb"
+      },
+      "mechanical-film": {
+        "accepted": true,
+        "revision": "f590d9cd2d95275ab34940aa203fc12f5a79616b90c3e94402d7d288d2d29e79",
+        "native_manifest": "8f9c67fe8d66646b9515bde57228094d2c412e3e09dc7f5adfd0f837aba10461"
+      },
+      "decoded_frames": 144,
+      "decoded_frames_match_previous_acceptance": true
+    },
+    "inline4": {
+      "mechanism": {
+        "accepted": true,
+        "revision": "d748302c3a905edb0b286786db2be737e356ffc3fe5c4c23fafc0ee9de971211",
+        "native_manifest": "b7d9cc73a9a4144def1e37b3cbf5ef693ba3446885f3d86ba157d20e12486fcb"
+      },
+      "appearance": {
+        "accepted": true,
+        "revision": "201b2861bdc594c1aedcd9ee07f28d155266d3eb1a228d94f8fa2892a9d53833",
+        "native_manifest": "bc3aa8aff931f8784ec15fb44126922802b57c16cb516d10ab525d2bdc2785eb"
+      },
+      "mechanical-film": {
+        "accepted": true,
+        "revision": "a4b628ce10e261cf16d81d3f52226929488925f6274143b571851abdc396dc7a",
+        "native_manifest": "8f9c67fe8d66646b9515bde57228094d2c412e3e09dc7f5adfd0f837aba10461"
+      },
+      "decoded_frames": 192,
+      "decoded_frames_match_previous_acceptance": true
+    }
+  },
+  "transport_refusals": 3,
+  "shuttle": {
+    "accepted_ora_open_requests": 2,
+    "unaccepted_output_refused": true,
+    "native_window_confirmation": "pending-mac-unlock",
+    "scope": "film first-frame reference; full animation is in editable.blend"
+  },
+  "retained_failure": {
+    "count": 1,
+    "cause": "auxiliary snapshot filenames lost their extensions",
+    "fixed": true,
+    "old_attempt_unaccepted": true,
+    "automatic_retries": 0
+  },
+  "product_lifecycle": {
+    "pause_resume_observed_in_both_views": true,
+    "accepted_custody_preserved": true
+  }
+}
