@@ -53,6 +53,8 @@ jobs:
           python -B examples/mechanical-animation/product/pack.py .local/native-a
           python -B examples/mechanical-animation/product/pack.py .local/native-b
           node --check examples/mechanical-animation/product/app.js
+          python -B examples/mechanical-animation/product/product.py --help
+          python -B examples/mechanical-animation/product/qualify.py --help
           python - <<'PYCODE'
           from pathlib import Path
           a, b = Path('.local/native-a'), Path('.local/native-b')
