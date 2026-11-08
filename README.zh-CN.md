@@ -51,3 +51,7 @@ Shuttle 导入的 `@an-spool/cad-material-policy` 独立版本化补全指令、
 [Spool 源码与契约](spools/cad-paint/README.md) ·
 [材质策略](packages/cad-material-policy/README.md) ·
 [应用配置与验收](https://github.com/lazyalexander/an-shuttle/blob/main/docs/cad-paint.zh-CN.md)
+
+kit 标记 agent 修改或新增的代码、skill 和文件。未修改副本保留 silk 基线标签。修改历史、当前基线匹配、可信度和保留决定分别记录，路径与旧槽位名称不决定标签。
+
+教学包与三阶段宿主复跑参见[机械动画教学链](examples/mechanical-animation/README.md)，发布身份见[教学发布清单](teaching-releases.json)。
