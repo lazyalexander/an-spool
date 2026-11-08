@@ -1,0 +1,22 @@
+name: CAD material policy
+on:
+  push:
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  policy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - working-directory: packages/cad-material-policy
+        run: |
+          npm ci --ignore-scripts --no-audit --no-fund
+          npm run build
+          npm test
+          mkdir "$RUNNER_TEMP/client"
+          npm pack --ignore-scripts --pack-destination "$RUNNER_TEMP/client"
+          python3 verify-package.py releases/an-spool-cad-material-policy-0.1.0.tgz "$RUNNER_TEMP/client/an-spool-cad-material-policy-0.1.0.tgz"
