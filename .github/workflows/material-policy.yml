@@ -19,4 +19,4 @@ jobs:
           npm test
           mkdir "$RUNNER_TEMP/client"
           npm pack --ignore-scripts --pack-destination "$RUNNER_TEMP/client"
-          cmp releases/an-spool-cad-material-policy-0.1.0.tgz "$RUNNER_TEMP/client/an-spool-cad-material-policy-0.1.0.tgz"
+          python3 verify-package.py releases/an-spool-cad-material-policy-0.1.0.tgz "$RUNNER_TEMP/client/an-spool-cad-material-policy-0.1.0.tgz"
