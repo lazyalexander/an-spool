@@ -2,6 +2,8 @@
 
 Reviewed domain spool sources and immutable client distributions.
 
+- `packages/cad-material-policy`: versioned material completion, kit planning and
+  historical evidence adoption imported by Shuttle; no model or execution loop.
 - `spools/cad-paint`: the qualified CAD painting release, domain instructions,
   material policy, renderer, editable appearance kit and independent checks.
 - an-loom owns development, validation and packaging. an-agent owns authorization,
