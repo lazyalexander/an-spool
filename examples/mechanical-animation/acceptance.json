@@ -1,0 +1,108 @@
+{
+  "date": "2026-11-08",
+  "platform": "macos-apple-silicon",
+  "blender": "5.2.3",
+  "route": "operator-reviewed-workspace",
+  "graphics": "macos-agx-metal-v1",
+  "iokit_classes": [
+    "AGXDeviceUserClient",
+    "IOSurfaceRootUserClient"
+  ],
+  "mach_services": [
+    "com.apple.coreservices.launchservicesd",
+    "com.apple.MTLCompilerService"
+  ],
+  "new_image_generation_calls": 0,
+  "file_and_network_denials_passed": true,
+  "cancelled_blender_reaped_without_publication": true,
+  "cases": {
+    "steam": {
+      "decoded_frames_equal": 144,
+      "film_sha256": "05b8895f4daaf1d6f168b3ad3c0c2c83008a0fee85df16f67b7dada2bc96c435",
+      "scene_verification": {
+        "passed": true,
+        "stage": "verify",
+        "frames_checked": 72,
+        "max_pose_error": 3.442234373096653e-06,
+        "source_vertex_errors": {
+          "base": 0.0,
+          "frame": 3.137695316013378e-06,
+          "guides": 1.8598632820499006e-06,
+          "cylinder": 7.2558593799954e-07,
+          "piston": 4.5080566479782647e-07,
+          "crank": 8.913574234270527e-07,
+          "flywheel": 1.8820800775642965e-06,
+          "rod": 3.7622070294673904e-06
+        },
+        "source_triangles_verified": true,
+        "geometry_and_uv_unchanged": true,
+        "camera_and_environment_static": true,
+        "generative_calls": 0,
+        "scope": "Sampled source-model fidelity only. No new collision proof, subframe or temporal-shading certification."
+      }
+    },
+    "inline4": {
+      "decoded_frames_equal": 192,
+      "film_sha256": "48d28fbd37909c0c9026dc93df8bcf5bbf62b9b40343c1742721223d6e10f998",
+      "scene_verification": {
+        "passed": true,
+        "stage": "verify",
+        "frames_checked": 192,
+        "max_pose_error": 7.136136218832689e-06,
+        "source_vertex_errors": {
+          "display_base": 0.0,
+          "sectioned_block": 0.0,
+          "liner_1": 0.0,
+          "liner_2": 0.0,
+          "liner_3": 0.0,
+          "liner_4": 0.0,
+          "crankshaft": 0.0,
+          "flywheel": 0.0,
+          "crank_pulley": 0.0,
+          "main_bearings": 0.0,
+          "piston_1": 0.0,
+          "rings_1": 0.0,
+          "rod_1": 0.0,
+          "piston_2": 0.0,
+          "rings_2": 0.0,
+          "rod_2": 0.0,
+          "piston_3": 0.0,
+          "rings_3": 0.0,
+          "rod_3": 0.0,
+          "piston_4": 0.0,
+          "rings_4": 0.0,
+          "rod_4": 0.0,
+          "intake_1": 0.0,
+          "exhaust_1": 0.0,
+          "spark_plug_1": 0.0,
+          "intake_2": 0.0,
+          "exhaust_2": 0.0,
+          "spark_plug_2": 0.0,
+          "intake_3": 0.0,
+          "exhaust_3": 0.0,
+          "spark_plug_3": 0.0,
+          "intake_4": 0.0,
+          "exhaust_4": 0.0,
+          "spark_plug_4": 0.0,
+          "camshaft": 0.0,
+          "cam_pulley": 0.0,
+          "sectioned_head": 0.0,
+          "valve_guides": 0.0,
+          "cam_bearings": 0.0,
+          "timing_belt": 0.0
+        },
+        "source_triangles_verified": true,
+        "geometry_and_uv_unchanged": true,
+        "camera_and_environment_static": true,
+        "generative_calls": 0,
+        "scope": "Sampled source-model fidelity only. No new collision proof, subframe or temporal-shading certification."
+      }
+    }
+  },
+  "entry_sha256": {
+    "mechanism": "981b91c43f94025f66b47b705c0b3e2ea13dbcb966abd53704c8263b2cb5bd71",
+    "appearance": "ba70a7be5a7be004a5f12ecdda46d3954edd354ab4e58b31824b2e8041a5b2a0",
+    "mechanical-film": "414316cb42f7668748c9d763336e56625beef44f9cd9bf718b3dfab447ae4c91"
+  },
+  "scope": "Three source releases through the existing reviewed workspace backend; retained approved appearance assets; Blender editable-scene and film custody."
+}
