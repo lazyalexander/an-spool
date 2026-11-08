@@ -1,0 +1,27 @@
+{
+  "name": "@an-loom/cad-paint-spool",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    "./agent": {
+      "types": "./dist/agent.d.ts",
+      "default": "./dist/agent.js"
+    },
+    "./entry": "./silk/main.py",
+    "./ora": "./silk/ora.py",
+    "./manifest": "./native-spool.toml",
+    "./archive": "./dist/cad-paint.loom.tar.gz",
+    "./requirements": "./dist/requirements.txt"
+  },
+  "files": [
+    "AGENTS.md",
+    "native-spool.toml",
+    "silk",
+    "kit",
+    "dist"
+  ],
+  "devDependencies": {
+    "typescript": "5.9.3"
+  }
+}

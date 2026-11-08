@@ -1,0 +1,30 @@
+name: Mature CAD spool
+on:
+  push:
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  package:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/checkout@v4
+        with:
+          repository: lazyalexander/an-loom
+          ref: d38b1bdc865c209197cd54f7f101f91c9cac7ff5
+          path: .local/loom
+          persist-credentials: false
+      - run: cargo build --manifest-path .local/loom/Cargo.toml --locked --bin an-loom
+      - working-directory: spools/cad-paint
+        run: |
+          npm ci --ignore-scripts --no-audit --no-fund
+          python -m pip install --only-binary=:all: drjit==1.5.0 mitsuba==3.9.1 numpy==2.3.5 pillow==12.3.0
+          python -B -m unittest discover -s tests -v
+          python -B pack-client.py --loom ../../.local/loom/target/debug/an-loom --tsc node_modules/.bin/tsc --output releases --check

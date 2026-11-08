@@ -1,0 +1,31 @@
+{
+  "schema": "an-spool-catalog-v1",
+  "spools": [
+    {
+      "name": "cad-paint",
+      "source": "spools/cad-paint",
+      "version": "0.1.0",
+      "npm_name": "@an-loom/cad-paint-spool",
+      "release_digest": "1a380dff33ca0fc569d306e6de67af505544bb4185d7db086f600b9bc63ee4a1",
+      "distribution": "spools/cad-paint/releases/an-loom-cad-paint-spool-0.1.0.tgz",
+      "distribution_sha256": "e1664cb91fceabc6049396509c3a01c17f81fd3b245a180e3b115dee33cf3144",
+      "qualification": {
+        "os": "macos",
+        "drawings": [
+          "vise",
+          "handwheel"
+        ],
+        "codex_cli": "0.166.0",
+        "real_codex_material_completion": true,
+        "native_supervisor_and_custody": true,
+        "krita_editable_layers": [
+          4,
+          5
+        ],
+        "krita_strict_pixels_equal": true,
+        "incomplete_and_cancelled_not_delivered": true,
+        "cloud_required": false
+      }
+    }
+  ]
+}
