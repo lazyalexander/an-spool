@@ -51,8 +51,14 @@
   "shuttle": {
     "accepted_ora_open_requests": 2,
     "unaccepted_output_refused": true,
-    "native_window_confirmation": "pending-mac-unlock",
-    "scope": "film first-frame reference; full animation is in editable.blend"
+    "native_window_confirmation": "observed-both-cases",
+    "scope": "film first-frame reference; full animation is in editable.blend",
+    "native_dimensions": [
+      1920,
+      1080
+    ],
+    "native_layer": "film-reference",
+    "new_kra_roundtrip_claimed": false
   },
   "retained_failure": {
     "count": 1,
