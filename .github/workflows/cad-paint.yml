@@ -28,3 +28,23 @@ jobs:
           python -m pip install --only-binary=:all: drjit==1.5.0 mitsuba==3.9.1 numpy==2.3.5 pillow==12.3.0
           python -B -m unittest discover -s tests -v
           python -B pack-client.py --loom ../../.local/loom/target/debug/an-loom --tsc node_modules/.bin/tsc --output releases --check
+      - name: Mechanical source releases and render gates
+        run: |
+          python -B -m unittest discover -s spools/mechanical-film/source -p 'test_*.py' -v
+          python - <<'PYCODE'
+          from pathlib import Path
+          import hashlib, json, subprocess
+          loom = str(Path('.local/loom/target/debug/an-loom').resolve())
+          for item in json.loads(Path('teaching-releases.json').read_text())['releases']:
+              archive = Path(item['distribution'])
+              assert hashlib.sha256(archive.read_bytes()).hexdigest() == item['distribution_sha256']
+              verified = json.loads(subprocess.check_output([loom, 'verify', str(archive)], text=True))
+              assert verified['releaseDigest'] == item['release_digest']
+              packed = json.loads(subprocess.check_output([loom, 'pack', item['source']], text=True))
+              assert Path(packed['archive']).read_bytes() == archive.read_bytes()
+          PYCODE
+      - name: Steam mechanism domain checks
+        working-directory: spools/mechanism/source/production-mechanics-v2
+        run: |
+          PYTHONPATH=src python -B tools/build_delivery.py
+          PYTHONPATH=src python -B -m unittest discover -s tests -v

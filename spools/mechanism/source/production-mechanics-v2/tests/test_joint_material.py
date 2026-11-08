@@ -9,7 +9,7 @@ from mechflow import mesh as prim
 from mechflow.types import Mesh
 
 spec = importlib.util.spec_from_file_location(
-    "joint_quality", Path(__file__).resolve().parents[2] / "mechanical-miniapp/quality.py")
+    "joint_quality", Path(__file__).resolve().parent / "support/quality.py")
 quality = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(quality)
 

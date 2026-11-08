@@ -4,11 +4,11 @@
   "releases": [
     {
       "name": "mechanism",
-      "version": "0.1.0",
+      "version": "0.1.1",
       "source": "spools/mechanism",
-      "distribution": "spools/mechanism/releases/mechanism-0.1.0-b1daaeafd86b.tar.gz",
-      "release_digest": "b1daaeafd86bd5b71efb62e07fb012dc574b86c60f184b5ae19c20aa7c55e45c",
-      "distribution_sha256": "68c0612de15c92004628f27744d5250054643bd1e281643cdf9637a0b39a921e"
+      "distribution": "spools/mechanism/releases/mechanism-0.1.1-dd3762387027.tar.gz",
+      "release_digest": "dd3762387027e5c2038a88812bc73fd3736e6530aed3205e45c310be0cb74c66",
+      "distribution_sha256": "e61a7c9c4202de13758c0e214f144fbc4b552dae1f2f7c01cfc013b5e96bc0bb"
     },
     {
       "name": "mechanical-film",
