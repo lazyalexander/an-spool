@@ -1,0 +1,31 @@
+{
+  "schema": "mechflow.scene/v1",
+  "id": "steam-engine",
+  "source": {
+    "kind": "steam_engine",
+    "parameters": {
+      "crank_radius": 16.0,
+      "rod_length": 64.0,
+      "piston_rod_length": 50.0,
+      "center_x": 40.0,
+      "axis_z": 65.0
+    }
+  },
+  "render": {
+    "width": 720,
+    "height": 540,
+    "camera": {
+      "eye": [210.0, -330.0, 205.0],
+      "target": [-18.0, 0.0, 54.0],
+      "ortho_width": 300.0
+    },
+    "light": [-0.45, -0.55, 0.7],
+    "ground_part_id": "base",
+    "ground_z": 14
+  },
+  "timeline": {
+    "fps": 24,
+    "duration_seconds": 3
+  },
+  "notes": "Kinematic parameters identical to mechanical-pipeline-v1/examples/slider-crank.json; the steam_engine provider restores the 34-unit flywheel axial separation and models the bearing/hub/pin fits."
+}

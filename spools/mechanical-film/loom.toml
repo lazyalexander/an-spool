@@ -1,0 +1,5 @@
+schema_version = 1
+name = "mechanical-film"
+version = "0.1.0"
+description = "Blender motion rendering and FFmpeg export"
+include = ["loom.toml", "README.md", "AGENTS.md", "source/blender_worker.py", "source/kit.py", "source/run.py", "source/test_kit.py"]

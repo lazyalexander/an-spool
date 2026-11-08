@@ -1,0 +1,5 @@
+schema_version = 1
+name = "appearance"
+version = "0.1.0"
+description = "Retained painted assets and appearance instructions"
+include = ["loom.toml", "README.md", "AGENTS.md", "source/atlas.png", "source/background.png", "source/prompts.json", "source/run.py"]

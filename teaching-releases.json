@@ -1,0 +1,30 @@
+{
+  "schema": "an-spool-teaching-releases-v1",
+  "execution": "operator-reviewed-workspace",
+  "releases": [
+    {
+      "name": "mechanism",
+      "version": "0.1.0",
+      "source": "spools/mechanism",
+      "distribution": "spools/mechanism/releases/mechanism-0.1.0-b1daaeafd86b.tar.gz",
+      "release_digest": "b1daaeafd86bd5b71efb62e07fb012dc574b86c60f184b5ae19c20aa7c55e45c",
+      "distribution_sha256": "68c0612de15c92004628f27744d5250054643bd1e281643cdf9637a0b39a921e"
+    },
+    {
+      "name": "mechanical-film",
+      "version": "0.1.0",
+      "source": "spools/mechanical-film",
+      "distribution": "spools/mechanical-film/releases/mechanical-film-0.1.0-93e734c3e822.tar.gz",
+      "release_digest": "93e734c3e822ea44b9387c4163ef4b3b78625b51ddc2fc1c7172d2eb3bb468c2",
+      "distribution_sha256": "0fa7787493b0f7cd193a6d4d2eac463514edf58a58e7ccad690c8cfa7fdb8cd9"
+    },
+    {
+      "name": "appearance",
+      "version": "0.1.0",
+      "source": "spools/appearance",
+      "distribution": "spools/appearance/releases/appearance-0.1.0-e46988eb96ee.tar.gz",
+      "release_digest": "e46988eb96ee2638cc2eea8a374994b0f1fd5b53135f52a5757797840c2fff27",
+      "distribution_sha256": "f1b7fc5933760b769f54c0e6adb49b30b7002e3ab8149a278f5bc4473b268d5b"
+    }
+  ]
+}

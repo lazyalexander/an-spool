@@ -59,3 +59,7 @@ CAD is an example of domain packaging, not the catalog's scope.
 [Spool source and contract](spools/cad-paint/README.md) ·
 [Material policy](packages/cad-material-policy/README.md) ·
 [Application setup and acceptance](https://github.com/lazyalexander/an-shuttle/blob/main/docs/cad-paint.md)
+
+Kit labels files modified or created by an agent. Unchanged copies retain their silk baseline label. Modification history, current baseline match, trust and retention decisions remain separate records. Paths and legacy slot names do not define this label.
+
+The [mechanical teaching chain](examples/mechanical-animation/README.md) runs the three source releases through the existing host. See [teaching release identities](teaching-releases.json).
