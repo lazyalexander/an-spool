@@ -1,16 +1,17 @@
-"""Local teaching application over the existing daemon; no execution loop or queue."""
+"""Teaching example only: domain sequencing over the existing daemon client."""
 
 import argparse
 import hashlib
 import json
-import os
 import secrets
 import subprocess
-import time
-from http.server import BaseHTTPRequestHandler, HTTPServer
+import sys
 from pathlib import Path
 
+sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
 from pack import build
+from support.daemon_client import DaemonClient
+from support.local_page import serve_application
 
 HERE = Path(__file__).resolve().parent
 STAGES = ["mechanism", "appearance", "mechanical-film"]
@@ -127,7 +128,7 @@ def prepare(args):
     )
 
 
-class Application:
+class Application(DaemonClient):
     def __init__(self, root):
         self.root = root.resolve(strict=True)
         if self.root.stat().st_mode & 0o077:
@@ -137,36 +138,6 @@ class Application:
         for stages in self.config["cases"].values():
             for stage in stages.values():
                 self.request({"op": "register", "instance": stage["instance"]})
-
-    def request(self, value, credential=None):
-        # Credentials exist only in this call; original grants belong to the daemon.
-        import socket
-
-        payload = {"credential": credential, "request": value} if credential else value
-        data = json.dumps(payload).encode() + b"\n"
-        if len(data) > 131072:
-            raise ValueError("Request too large")
-        with socket.socket(socket.AF_UNIX) as sock:
-            sock.settimeout(60)
-            sock.connect(
-                str(
-                    Path(self.config["service"])
-                    / ("tasks.sock" if credential else "control.sock")
-                )
-            )
-            sock.sendall(data)
-            response = b""
-            while True:
-                chunk = sock.recv(65536)
-                if not chunk:
-                    break
-                response += chunk
-                if len(response) > 4 * 1024 * 1024:
-                    raise ValueError("Response too large")
-        value = json.loads(response)
-        if "error" in value:
-            raise ValueError(value["error"])
-        return value["result"]
 
     def view(self):
         snapshot = self.request({"op": "show"})
@@ -201,24 +172,18 @@ class Application:
                     "catalog": str(catalog),
                     "revision": binding["revision"],
                 }
-                req["input"] = str(
-                    catalog
-                    / "revisions"
-                    / binding["revision"]
-                    / (
-                        "content.bin"
-                        if binding.get("encoding") == "bytes"
-                        else "content.txt"
-                    )
-                )
+
             else:
                 req["input"] = str(self.root / f"{case}.json")
             permission = {
                 "kind": "run",
                 **common,
-                "input": req["input"],
                 "seconds": stage["seconds"],
             }
+            if index:
+                permission.update(kind="run-artifact", **req["artifact"])
+            else:
+                permission["input"] = req["input"]
         elif operation == "accept":
             req = {"op": "accept", **common}
             permission = {"kind": "accept", **common}
@@ -286,127 +251,11 @@ class Application:
                 plan["stage"]["run"],
                 target,
             )
-        req = plan["request"]
-        if "scope" not in plan:
-            return self.request({**req, "approve": plan["native"]["approval_sha256"]})
-        scope = {
-            **plan["scope"],
-            "expires_ms": int(time.time() * 1000)
-            + (plan["request"].get("seconds", 60) + 120) * 1000,
-        }
-        grant_req = {"op": "grant", "scope": scope}
-        preview = self.request(grant_req)
-        credential = self.request({**grant_req, "approve": preview["approval_sha256"]})[
-            "credential"
-        ]
-        try:
-            authorized = self.request(req, credential)
-            # The only permitted preview change is the newly issued task binding.
-            before = plan["native"]["plan"].copy()
-            after = authorized["plan"].copy()
-            after.pop("task_authorization", None)
-            if before != after:
-                raise ValueError("Native execution changed after permission binding")
-            return self.request(
-                {**req, "approve": authorized["approval_sha256"]}, credential
-            )
-        except Exception:
-            revoke = {"op": "revoke-grant", "id": credential["id"]}
-            preview = self.request(revoke)
-            self.request({**revoke, "approve": preview["approval_sha256"]})
-            raise
+        return self.execute_plan(plan)
 
 
 def serve(root):
-    app = Application(root)
-    token = secrets.token_hex(32)
-
-    class Handler(BaseHTTPRequestHandler):
-        def log_message(self, *args):
-            pass
-
-        def respond(self, status, body, mime="application/json"):
-            body = body.encode()
-            self.send_response(status)
-            for key, value in {
-                "Content-Type": mime,
-                "Content-Length": str(len(body)),
-                "Cache-Control": "no-store",
-                "Referrer-Policy": "no-referrer",
-                "X-Content-Type-Options": "nosniff",
-                "Content-Security-Policy": "default-src 'self'; style-src 'unsafe-inline'; frame-ancestors 'none'",
-            }.items():
-                self.send_header(key, value)
-            self.end_headers()
-            self.wfile.write(body)
-
-        def do_GET(self):
-            if self.headers.get("Host") != self.server.authority:
-                return self.respond(403, "{}")
-            if self.path in ("/", "/app.js"):
-                return self.respond(
-                    200,
-                    (
-                        HERE / ("index.html" if self.path == "/" else "app.js")
-                    ).read_text(),
-                    "text/html; charset=utf-8"
-                    if self.path == "/"
-                    else "text/javascript; charset=utf-8",
-                )
-            if (
-                self.path != "/view"
-                or self.headers.get("Authorization") != "Bearer " + token
-            ):
-                return self.respond(403, "{}")
-            try:
-                self.respond(200, json.dumps(app.view()))
-            except (
-                ValueError,
-                OSError,
-                RuntimeError,
-                KeyError,
-                TypeError,
-                StopIteration,
-                subprocess.SubprocessError,
-            ) as error:
-                self.respond(400, json.dumps({"error": str(error)}))
-
-        def do_POST(self):
-            if (
-                self.headers.get("Host") != self.server.authority
-                or self.path != "/action"
-                or self.headers.get("Origin") != "http://" + self.server.authority
-                or self.headers.get("Authorization") != "Bearer " + token
-            ):
-                return self.respond(403, "{}")
-            try:
-                size = int(self.headers.get("Content-Length", "0"))
-                if not 0 < size <= 131072:
-                    raise ValueError("Invalid request size")
-                self.respond(
-                    200, json.dumps(app.act(json.loads(self.rfile.read(size))))
-                )
-            except (
-                ValueError,
-                OSError,
-                RuntimeError,
-                KeyError,
-                TypeError,
-                StopIteration,
-                subprocess.SubprocessError,
-            ) as error:
-                self.respond(400, json.dumps({"error": str(error)}))
-
-    server = HTTPServer(("127.0.0.1", 0), Handler)
-    server.authority = f"127.0.0.1:{server.server_port}"
-    (root / "application-endpoint.json").write_text(
-        json.dumps({"url": f"http://{server.authority}/#{token}"})
-    )
-    os.chmod(root / "application-endpoint.json", 0o600)
-    try:
-        server.serve_forever()
-    finally:
-        server.server_close()
+    serve_application(Application(root), root, HERE)
 
 
 if __name__ == "__main__":
