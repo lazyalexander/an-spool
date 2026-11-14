@@ -21,5 +21,12 @@
     "size": 180583,
     "version": "3.3.1",
     "license": "BSD-2-Clause"
+  },
+  "python_macos": {
+    "name": "cpython-3.12.16+20261110-aarch64-apple-darwin-install_only_stripped.tar.gz",
+    "url": "https://github.com/astral-sh/python-build-standalone/releases/download/20261110/cpython-3.12.16%2B20261110-aarch64-apple-darwin-install_only_stripped.tar.gz",
+    "sha256": "2f11b8aa3726bdbd87dd9eb76568412faddf4f47e26913fa45d6a2e424972acd",
+    "size": 25237581,
+    "license": "Python-2.0 and bundled dependency notices; retain archive notices"
   }
 }

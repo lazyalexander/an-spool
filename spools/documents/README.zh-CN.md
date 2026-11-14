@@ -8,8 +8,11 @@ v1 支持文本 PDF 的 EUR 物料报价：标题、Currency EUR、Item Quantity
 
 可移植程序提取 PDF 文本、对照来源验证 Markdown 提案、对照已验收 Markdown 检查结构化行、
 生成 XLSX，并独立验证单元格、公式、缓存合计和来源摘要。客体提取和生成所需的固定
-pypdf/XlsxWriter wheel 由操作员离线准备。原生 spool 入口仅用 Python 标准库，对照操作员
-选定的已验收 Markdown（AN_SPOOL_AUX_0）检查 XLSX 候选，输出 result.xlsx 和 verification.json。
+pypdf/XlsxWriter wheel 由操作员离线准备。delivery.json 声明固定客体动作、提示与澄清字段。
+pack-delivery.py --loom PATH --output NEW_DIRECTORY 通过 Loom 构建并验证两个独立原生验收包：
+Markdown 对照原 PDF 和获准答案（AN_SPOOL_AUX_0/1），工作簿对照已验收 Markdown（AN_SPOOL_AUX_0）。
+两者保留领域程序并输出 verification.json；Markdown 使用固定 pypdf，工作簿只使用标准库。
+根目录原生入口继续提供工作簿验证兼容性。
 依赖归档、镜像、配置、凭据、原始会话和生成文档均保留在私有目录。
 
 使用选定依赖目录运行领域测试，再执行 Loom check/pack/verify 和 export-native-spool-v3。
