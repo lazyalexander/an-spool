@@ -13,9 +13,13 @@ The portable body extracts PDF text, checks a proposed Markdown table against
 source facts, checks structured rows against accepted Markdown, generates XLSX,
 and independently verifies workbook cells, formulas, cached totals and provenance.
 The locked pypdf/XlsxWriter wheels are operator-provisioned offline dependencies
-for guest extraction/authoring. The native spool entry uses only Python's standard
-library to verify an XLSX candidate against operator-selected accepted Markdown
-(AN_SPOOL_AUX_0) and emits result.xlsx plus verification.json. Dependency archives,
+for guest extraction/authoring. `delivery.json` declares the fixed guest actions, prompts and clarification fields.
+`pack-delivery.py --loom PATH --output NEW_DIRECTORY` builds and verifies two
+independent native acceptance releases through Loom: Markdown checks the original
+PDF plus authorized answers (AN_SPOOL_AUX_0/1), while workbook checks accepted
+Markdown (AN_SPOOL_AUX_0). Both retain the domain body and emit verification.json;
+Markdown needs the pinned pypdf site and workbook uses the standard library.
+The legacy root native entry remains the workbook verifier. Dependency archives,
 images, profiles, credentials, raw sessions and generated documents stay private.
 
 Run the domain tests with the selected dependency site on PYTHONPATH, then use
