@@ -63,3 +63,7 @@ CAD is an example of domain packaging, not the catalog's scope.
 Kit labels files modified or created by an agent. Unchanged copies retain their silk baseline label. Modification history, current baseline match, trust and retention decisions remain separate records. Paths and legacy slot names do not define this label.
 
 The [mechanical teaching chain](examples/mechanical-animation/README.md) runs the three source releases through the existing host. See [teaching release identities](teaching-releases.json).
+
+## Documents
+
+The [document domain](spools/documents/README.md) provides bounded EUR PDF, Markdown and XLSX transformations plus independent verification. The host owns the primary session, execution grants and formal artifact custody; no provider loop is packaged with the domain.

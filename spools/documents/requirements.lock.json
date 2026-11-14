@@ -1,0 +1,32 @@
+{
+  "python": {
+    "name": "cpython-3.12.16+20261110-aarch64-unknown-linux-gnu-install_only_stripped.tar.gz",
+    "browser_download_url": "https://github.com/astral-sh/python-build-standalone/releases/download/20261110/cpython-3.12.16%2B20261110-aarch64-unknown-linux-gnu-install_only_stripped.tar.gz",
+    "digest": "sha256:b6a41defec4975d94b4ff1950236e7383e5c02ba40ea48c9ec33c66087a35aab",
+    "size": 29440910,
+    "license": "Python-2.0 and bundled dependency notices; retain archive notices"
+  },
+  "pypdf": {
+    "name": "pypdf-7.1.0-py3-none-any.whl",
+    "url": "https://files.pythonhosted.org/packages/ed/4c/d19f91b743c8579b67e3d8b001e095745dec5bb13a9b4b9eadc235a85d9e/pypdf-7.1.0-py3-none-any.whl",
+    "sha256": "47cca6b24bdcf4c4d65b5f7b8b972535c61710a061261e737688777cfd9a7bfb",
+    "size": 418698,
+    "version": "7.1.0",
+    "license": "BSD-3-Clause"
+  },
+  "XlsxWriter": {
+    "name": "xlsxwriter-3.3.1-py3-none-any.whl",
+    "url": "https://files.pythonhosted.org/packages/88/eb/1e6af9959a567901a7e7c7cef2e75883e487df223ed67f9a8977ff863bd8/xlsxwriter-3.3.1-py3-none-any.whl",
+    "sha256": "8e2c89e59d733fe59e112317218c64fbbc276d90a8c144ebd6f7fa15e7ab184a",
+    "size": 180583,
+    "version": "3.3.1",
+    "license": "BSD-2-Clause"
+  },
+  "python_macos": {
+    "name": "cpython-3.12.16+20261110-aarch64-apple-darwin-install_only_stripped.tar.gz",
+    "url": "https://github.com/astral-sh/python-build-standalone/releases/download/20261110/cpython-3.12.16%2B20261110-aarch64-apple-darwin-install_only_stripped.tar.gz",
+    "sha256": "2f11b8aa3726bdbd87dd9eb76568412faddf4f47e26913fa45d6a2e424972acd",
+    "size": 25237581,
+    "license": "Python-2.0 and bundled dependency notices; retain archive notices"
+  }
+}

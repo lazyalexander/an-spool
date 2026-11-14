@@ -1,0 +1,65 @@
+{
+  "schema": "an-task-delivery-v1",
+  "label": "PDF to Markdown and Excel",
+  "input_extension": ".pdf",
+  "knowledge": "knowledge/contract.md",
+  "program": "silk/document.py",
+  "guest_interpreter": "/opt/python/bin/python3.12",
+  "extract": {
+    "action": "job-extract",
+    "outputs": {
+      "source.json": "utf-8"
+    }
+  },
+  "intermediate": {
+    "action": "job-markdown",
+    "outputs": {
+      "markdown.md": "utf-8"
+    },
+    "output": "markdown.md",
+    "package": "markdown",
+    "dependencies": [
+      "pypdf-7.1.0"
+    ]
+  },
+  "final": {
+    "action": "job-workbook",
+    "outputs": {
+      "result.xlsx": "bytes",
+      "verification.json": "utf-8"
+    },
+    "output": "result.xlsx",
+    "package": "workbook",
+    "dependencies": []
+  },
+  "clarifications": {
+    "currency": {
+      "label": {
+        "en": "Currency",
+        "zh-CN": "币种"
+      },
+      "type": "enum",
+      "choices": [
+        "EUR"
+      ]
+    },
+    "quantity": {
+      "label": {
+        "en": "Quantity",
+        "zh-CN": "数量"
+      },
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 1000000
+    }
+  },
+  "initial_instruction": "Read the authorized domain contract. Execute extraction and read source.json. If requires_clarification has entries, return ok=false and those exact keys as questions without guessing. Otherwise propose the contract Markdown and execute the intermediate job with data.markdown. Return ok=true,questions=[] only when its state is proposed.",
+  "clarification_instruction": "Read the separately authorized user answers. Propose Markdown preserving all PDF facts and using answers only for missing fields. Execute the intermediate job with both source and answer input references and data.markdown. Return ok=true,questions=[] only when proposed.",
+  "final_instruction": "Read the accepted Markdown artifact. Use its content_sha256 as source_sha256 and propose its exact rows, each with item, quantity, unit_price. Execute the final job with data={source_sha256,rows} and the accepted artifact reference as its only input. Return ok=true,questions=[] only when the job is proposed and verification passed.",
+  "clarification_source": {
+    "output": "source.json",
+    "keys": "requires_clarification",
+    "rows": "rows",
+    "label": "item"
+  }
+}

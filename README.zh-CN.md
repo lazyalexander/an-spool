@@ -55,3 +55,7 @@ Shuttle 导入的 `@an-spool/cad-material-policy` 独立版本化补全指令、
 kit 标记 agent 修改或新增的代码、skill 和文件。未修改副本保留 silk 基线标签。修改历史、当前基线匹配、可信度和保留决定分别记录，路径与旧槽位名称不决定标签。
 
 教学包与三阶段宿主复跑参见[机械动画教学链](examples/mechanical-animation/README.md)，发布身份见[教学发布清单](teaching-releases.json)。
+
+## 文档
+
+[文档领域包](spools/documents/README.zh-CN.md) 提供有界 EUR PDF、Markdown 和 XLSX 转换及独立验证。主会话、执行授权和正式产物保管由宿主负责，领域包不包含提供方循环。
