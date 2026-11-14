@@ -1,0 +1,5 @@
+schema_version = 1
+name = "documents"
+version = "0.1.0"
+description = "Bounded EUR PDF, Markdown and workbook domain checks"
+include = ["loom.toml", "native-spool.toml", "silk", "knowledge", "tests", "README.md", "README.zh-CN.md", "AGENTS.md", "requirements.lock.json", "requirements.txt"]
