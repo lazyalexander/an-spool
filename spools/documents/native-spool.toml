@@ -1,0 +1,16 @@
+schema = "an-native-spool-v1"
+runtime = "macos-native-python-v1"
+entry = "silk/document.py"
+silk = ["silk/document.py"]
+kit = []
+editable = []
+inputs = ["result.xlsx"]
+outputs = ["result.xlsx", "verification.json"]
+binary_outputs = ["result.xlsx"]
+capabilities = ["read-input", "write-declared-outputs"]
+dependencies = []
+acceptance = ["python3 -B -m unittest discover -s tests -v"]
+
+[events]
+consumes = []
+produces = ["artifact.accepted"]
