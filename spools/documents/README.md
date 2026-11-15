@@ -52,3 +52,6 @@ Memory restoration and inferred success from a saved image remain unqualified.
 state to the exact accepted input digests selected by the host. Valid domain data
 from another revision is refused. New source PDFs remain authoritative for new
 deliveries; prior products are disclosed only through a fresh host grant.
+
+Native extraction requires each item row on one line. Ambiguous wrapped names
+are refused; the older model-led benchmark is a separately qualified path.

@@ -14,8 +14,9 @@ ROWS = [{'item':'Bolt','quantity':12,'unit_price':'0.50'},
         {'item':'Bearing','quantity':2,'unit_price':'4.25'}]
 
 
-def pdf_bytes(currency='Currency EUR',quantity='12'):
+def pdf_bytes(currency='Currency EUR',quantity='12',wrapped=False):
     lines=['Workshop supplies',currency,'Item Quantity Unit price',f'Bolt {quantity} 0.50','Plate 3 8.00','Bearing 2 4.25']
+    if wrapped:lines[-1:]=['Bear','ing 2 4.25']
     content='BT /F1 12 Tf 40 780 Td '+' '.join(('0 -20 Td ' if i else '')+'('+line+') Tj' for i,line in enumerate(lines))+' ET'
     objects=[b'<< /Type /Catalog /Pages 2 0 R >>',b'<< /Type /Pages /Kids [3 0 R] /Count 1 >>',
         b'<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 842] /Resources << /Font << /F1 4 0 R >> >> /Contents 5 0 R >>',
@@ -42,6 +43,10 @@ class Documents(unittest.TestCase):
         self.assertEqual(body.validate_markdown(source,MARKDOWN),MARKDOWN.encode())
         report=body.verify_workbook(MARKDOWN,self.workbook())
         self.assertEqual(report['total_eur'],'38.50');self.assertEqual(report['rows'],3)
+    def test_ambiguous_wrapped_item_does_not_guess_a_material_name(self):
+        pdf=self.root/'wrapped.pdf';pdf.write_bytes(pdf_bytes(wrapped=True))
+        with self.assertRaisesRegex(ValueError,'unsupported source row'):
+            body.extract_pdf(pdf)
     def test_ambiguous_source_and_changed_markdown_refuse(self):
         pdf=self.root/'source.pdf';pdf.write_bytes(pdf_bytes('Currency not specified'))
         uncertain=body.extract_pdf(pdf)
