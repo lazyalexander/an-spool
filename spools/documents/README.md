@@ -47,3 +47,8 @@ runtime bytes only; project bytes and kit must never become a shared environment
 Cocoon owns image registration/receipts; Loom packages pinned code; this domain
 owns document validation. Cancellation/reconnection query original operation IDs.
 Memory restoration and inferred success from a saved image remain unqualified.
+
+`resume DIRECTORY MARKDOWN_SHA256 WORKBOOK_SHA256` additionally matches restored
+state to the exact accepted input digests selected by the host. Valid domain data
+from another revision is refused. New source PDFs remain authoritative for new
+deliveries; prior products are disclosed only through a fresh host grant.

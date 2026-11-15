@@ -9,3 +9,7 @@ Unit price (EUR) 三列。数量为正整数，单价为非负 EUR 十进制且�
 下一轮通过宿主产物引用读取已验收 Markdown，提出包含 source_sha256 和 rows 的 JSON。
 每行仅包含 item、quantity 和 unit_price。source_sha256 来自已验收 Markdown 字节，
 不得从路径推断身份。程序计算金额和合计，宿主验证工作簿后交付。不启用模型子 agent。
+
+继续显式选定的私有项目时，只读取宿主授权的历史产物，将其作为历史上下文。
+新选定的 PDF 和澄清输入决定当前行数据。恢复状态需通过 checkpoint resume 与
+宿主选定的 Markdown、工作簿摘要重新匹配；匹配并不授予读取权限或证明当前已验收。

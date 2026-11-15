@@ -20,6 +20,12 @@ class Checkpoint(unittest.TestCase):
             saved = checkpoint.save(md, book, project)
             self.assertTrue(saved['passed'])
             self.assertEqual(checkpoint.verify(project), saved)
+            restored = checkpoint.resume(project, saved['markdown_sha256'], saved['workbook_sha256'])
+            self.assertTrue(restored['selected_inputs_match'])
+            self.assertTrue(restored['host_acceptance_required'])
+            for expected_md, expected_book in [('0' * 64, saved['workbook_sha256']), (saved['markdown_sha256'], '0' * 64), ('invalid', saved['workbook_sha256'])]:
+                with self.assertRaises(ValueError):
+                    checkpoint.resume(project, expected_md, expected_book)
             with self.assertRaises(FileExistsError):
                 checkpoint.save(md, book, project)
             (project / 'markdown.md').write_text(MD.replace('12', '13'))
