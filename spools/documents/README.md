@@ -28,3 +28,22 @@ execution authority. A real-model/VM chain is separately qualified; package chec
 alone make no claim about host termination, model behavior or product custody.
 The source and provider usage remain subject to their individual licenses;
 requirements.lock.json records acquisition identities, not a security audit.
+
+`silk/checkpoint.py save MARKDOWN WORKBOOK NEW_DIRECTORY` freezes selected inputs
+as private `an-document-project-v1` state. `verify DIRECTORY` rechecks both byte
+identities and the workbook's formulas, totals and Markdown provenance. It refuses
+links, extra files and overwrites. The host must supply authorized accepted input
+revisions; a checkpoint never establishes artifact custody or grants disclosure.
+
+For cold-image qualification, import the selected domain body, checkpoint program
+and accepted document inputs through the existing TaskSession guest work boundary.
+Save and verify the project directory, stop the original VM with framework and
+runner-exit evidence, then ask the host to save a private project candidate. After
+explicit approval, start an independent task branch with a new attempt and grant,
+revalidate the checkpoint there and export the workbook through the original host
+acceptance path. Rollback must return to the selected environment and remove the
+project directory. Repeat three times. Environment candidates contain reviewed
+runtime bytes only; project bytes and kit must never become a shared environment.
+Cocoon owns image registration/receipts; Loom packages pinned code; this domain
+owns document validation. Cancellation/reconnection query original operation IDs.
+Memory restoration and inferred success from a saved image remain unqualified.

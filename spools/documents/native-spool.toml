@@ -1,7 +1,7 @@
 schema = "an-native-spool-v1"
 runtime = "macos-native-python-v1"
 entry = "silk/document.py"
-silk = ["silk/document.py"]
+silk = ["silk/document.py", "silk/checkpoint.py"]
 kit = []
 editable = []
 inputs = ["result.xlsx"]
