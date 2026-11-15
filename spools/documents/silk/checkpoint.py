@@ -33,6 +33,18 @@ def verify(directory):
     return dict(report, schema='an-document-project-verification-v1', **{key: manifest[key] for key in ('markdown_sha256', 'workbook_sha256')})
 
 
+def resume(directory, markdown_sha256, workbook_sha256):
+    """Match restored bytes against the host-selected accepted revisions."""
+    expected = {'markdown_sha256': markdown_sha256, 'workbook_sha256': workbook_sha256}
+    for value in expected.values():
+        if len(value) != 64 or any(char not in '0123456789abcdef' for char in value):
+            raise ValueError('selected input digest required')
+    report = verify(directory)
+    if any(report[key] != value for key, value in expected.items()):
+        raise ValueError('restored project does not match selected accepted inputs')
+    return dict(report, selected_inputs_match=True, host_acceptance_required=True)
+
+
 def save(markdown, workbook, destination):
     """Freeze exactly the selected domain inputs; never infer host acceptance from a disk."""
     markdown, workbook, destination = Path(markdown), Path(workbook), Path(destination)
@@ -58,8 +70,10 @@ def save(markdown, workbook, destination):
 if __name__ == '__main__':
     if len(sys.argv) == 5 and sys.argv[1] == 'save':
         result = save(*sys.argv[2:])
+    elif len(sys.argv) == 5 and sys.argv[1] == 'resume':
+        result = resume(*sys.argv[2:])
     elif len(sys.argv) == 3 and sys.argv[1] == 'verify':
         result = verify(sys.argv[2])
     else:
-        raise SystemExit('usage: checkpoint.py save MARKDOWN WORKBOOK NEW_DIRECTORY | verify DIRECTORY')
+        raise SystemExit('usage: checkpoint.py save MARKDOWN WORKBOOK NEW_DIRECTORY | verify DIRECTORY | resume DIRECTORY MARKDOWN_SHA256 WORKBOOK_SHA256')
     print(json.dumps(result, sort_keys=True))

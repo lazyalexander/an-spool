@@ -13,3 +13,9 @@ Propose JSON containing source_sha256 and rows. Each row contains only item,
 quantity and unit_price. Copy source_sha256 from the accepted Markdown bytes;
 never infer an artifact identity from a path. The program computes amounts and
 totals. The host validates the workbook before delivery. No model child agents.
+
+When continuing an explicitly selected private project, read only the prior products
+authorized by the host. Treat them as historical context; the newly selected PDF
+and clarification inputs determine the current rows. Revalidate restored state
+against the host-selected Markdown and workbook digests with checkpoint resume.
+A matching checkpoint does not grant access or establish current host acceptance.
