@@ -32,7 +32,7 @@ Shuttle 导入的 `@an-spool/cad-material-policy` 独立版本化补全指令、
 | --- | --- |
 | ![水墨动画](https://raw.githubusercontent.com/lazyalexander/an-agent/d94f574197d8a7f56d30ca78d9cad8d81039d65d/assets/demos/mechanical-ink.gif) | ![手绘蒸汽机](https://raw.githubusercontent.com/lazyalexander/an-agent/d94f574197d8a7f56d30ca78d9cad8d81039d65d/assets/demos/painted-steam-engine.gif) |
 
-后续动画 spool 负责几何、既定运动、外观指令和领域检查。当前发布目录包含 CAD 绘画包，动画打包待完成。
+[机械动画教学流程](examples/mechanical-animation/README.md)使用三个已打包的教学版本。`mechanism` 生成几何模型，`appearance` 绑定外观素材，`mechanical-film` 渲染成片。[教学发布清单](teaching-releases.json)记录各包的版本和归档校验值。
 [教学流程与复现证据](https://github.com/lazyalexander/an-agent/blob/d94f574197d8a7f56d30ca78d9cad8d81039d65d/doc/zh-CN/doc/cases.md)。
 
 ### 补充案例 · 四缸发动机
@@ -53,8 +53,6 @@ Shuttle 导入的 `@an-spool/cad-material-policy` 独立版本化补全指令、
 [应用配置与验收](https://github.com/lazyalexander/an-shuttle/blob/main/docs/cad-paint.zh-CN.md)
 
 kit 标记 agent 修改或新增的代码、skill 和文件。未修改副本保留 silk 基线标签。修改历史、当前基线匹配、可信度和保留决定分别记录，路径与旧槽位名称不决定标签。
-
-教学包与三阶段宿主复跑参见[机械动画教学链](examples/mechanical-animation/README.md)，发布身份见[教学发布清单](teaching-releases.json)。
 
 ## 文档
 

@@ -38,7 +38,7 @@ is distinct from host execution and real application acceptance.
 | --- | --- |
 | ![Ink animation](https://raw.githubusercontent.com/lazyalexander/an-agent/d94f574197d8a7f56d30ca78d9cad8d81039d65d/assets/demos/mechanical-ink.gif) | ![Painted steam engine](https://raw.githubusercontent.com/lazyalexander/an-agent/d94f574197d8a7f56d30ca78d9cad8d81039d65d/assets/demos/painted-steam-engine.gif) |
 
-The future animation spool owns geometry, prescribed motion, appearance instructions and domain checks. The currently published catalog contains the CAD painting packages; animation packaging remains pending.
+The [mechanical animation workflow](examples/mechanical-animation/README.md) uses three packaged teaching releases: `mechanism` for geometry, `appearance` for appearance inputs and `mechanical-film` for rendering. The [teaching release manifest](teaching-releases.json) records their versions and archive checksums.
 [Teaching workflow and reproduction evidence](https://github.com/lazyalexander/an-agent/blob/d94f574197d8a7f56d30ca78d9cad8d81039d65d/doc/cases.md).
 
 ### Supplementary case · inline-four engine
@@ -61,8 +61,6 @@ CAD is an example of domain packaging, not the catalog's scope.
 [Application setup and acceptance](https://github.com/lazyalexander/an-shuttle/blob/main/docs/cad-paint.md)
 
 Kit labels files modified or created by an agent. Unchanged copies retain their silk baseline label. Modification history, current baseline match, trust and retention decisions remain separate records. Paths and legacy slot names do not define this label.
-
-The [mechanical teaching chain](examples/mechanical-animation/README.md) runs the three source releases through the existing host. See [teaching release identities](teaching-releases.json).
 
 ## Documents
 
